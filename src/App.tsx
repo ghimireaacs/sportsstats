@@ -1,12 +1,19 @@
-import { useState } from 'react'
+
 
 import './App.css'
+import Leagues from './Pages/Leagues/Leaguespages'
+import Navmenu from './components/Navbar/Navbar'
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <>
+      <Navmenu />
+      <div className=' grid bg-gray-200'>
+      <Leagues />
+      <p>Hello</p>
+      </div>
       
     </>
   )
