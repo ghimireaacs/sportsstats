@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-// Define interfaces for the data structure
 interface Area {
   id: number;
   name: string;
@@ -21,53 +20,44 @@ interface Competition {
   id: number;
   area: Area;
   name: string;
-  code: string;
+  code: string | null;
   type: string;
-  emblem: string;
+  emblem: string | null;
   plan: string;
   currentSeason: CurrentSeason;
+  numberOfAvailableSeasons: number;
+  lastUpdated: string;
 }
 
 interface ApiResponse {
   count: number;
-  filters: any; // You can define a more specific type if needed
+  filters: any;
   competitions: Competition[];
 }
 
-const leagueUrl: string = "https://api.football-data.org/v4/competitions";
+const leagueUrl: string = "./json/competitions.json";
 
 const Leagues: React.FC = () => {
   const [competitions, setCompetitions] = useState<Competition[]>([]);
 
   useEffect(() => {
-    const fetchLeagues = async () => {
-      try {
-        const response = await axios.get<ApiResponse>(leagueUrl, {
-          headers: { 'X-Auth-Token': process.env.REACT_APP_FOOTBALL_API_TOKEN }
-        });
-        setCompetitions(response.data.competitions);
-      } catch (error) {
-        console.error("Error fetching leagues:", error);
-      }
-    };
-
-    fetchLeagues();
+    axios.get<ApiResponse>(leagueUrl).then((response) => {
+      setCompetitions(response.data.competitions);
+    });
   }, []);
 
-  if (competitions.length === 0) return <p>Loading...</p>;
+
 
   return (
     <div>
       <h1>Competitions</h1>
+
       <ul>
-        {competitions.map(competition => (
+        {competitions.map((competition) => (
           <li key={competition.id}>
-            <p>ID: {competition.id}</p>
             <p>Name: {competition.name}</p>
-            <p>Area: {competition.area.name}</p>
             <p>Type: {competition.type}</p>
-            <img src={competition.emblem} alt={`${competition.name} emblem`} width={50} height={50} />
-            {/* Add other competition details as needed */}
+            {/* Display other competition details */}
           </li>
         ))}
       </ul>

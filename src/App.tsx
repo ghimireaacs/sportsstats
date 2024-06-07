@@ -1,7 +1,7 @@
 
 
 import './App.css'
-import Leagues from './Pages/Leagues/Leaguespages'
+import Leagues from './Pages/Leagues/Leaguespage'
 import Navmenu from './components/Navbar/Navbar'
 
 function App() {
