@@ -48,18 +48,24 @@ const Leagues:React.FC = () =>{
         </>
     );
     const competitionList=league.competitions.map((competition)=>(
-        <li key={competition.id}>
-            <p>
-                Id: {competition.id}
-            </p>
-        </li>
+        <div className="flex bg-red-400 w-64 h-64 rounded-md m-2 justify-center items-center ">
+            {/* THIS HANDLES EACH GRID of CARD */}
+        <div key={competition.id} className="bg-white w-24 flex h-32 ">
+        
+                {/* Id: {competition.id} */}
+            
+        </div>
+        </div>
     ))
     return(
         <>
-        <p>{league.count}</p>
-        <p>{competitionList}</p>
-
+        <div className="bg-blue-400 flex flex-wrap m-auto">
+            {/* FULL BACKGROUND */}
+        {/* <p>{league.count}</p> */}
+        {competitionList}
+        
         {/* <p>{league.name}</p> */}
+        </div>
         </>
     )
 }

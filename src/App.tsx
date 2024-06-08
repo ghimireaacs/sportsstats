@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Navmenu />
-      <div className=' grid bg-gray-200'>
+      <div className=' flex-auto w-auto'>
       <Leagues />
       <p>Hello</p>
       </div>
