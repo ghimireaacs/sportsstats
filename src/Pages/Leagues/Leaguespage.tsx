@@ -1,6 +1,11 @@
 import React from "react"
 import axios from "axios"
 import { useState, useEffect } from "react"
+import {Link, useParams } from 'react-router-dom'
+
+
+import About from "../About"
+
 
 
 interface League{
@@ -55,7 +60,7 @@ const Leagues:React.FC = () =>{
 
     const competitionList=competitionFiltered.map((competition)=>(
         
-        <a href={competition.code} > 
+        <Link to={competition.code} element={<About />} > 
         <div className="flex flex-col border-2 shadow-2xl shadow-lime-700 w-48 h-64 rounded-md m-8 justify-center items-center ">
             {/* THIS HANDLES EACH GRID of CARD */}
             
@@ -66,11 +71,12 @@ const Leagues:React.FC = () =>{
             
         </div>
         <div className="m-4 text-white text-center uppercase text-sm">
+            <p>{competition.id}</p>
         <p>{competition.name}</p>
         {/* <p>{competition.plan}</p> */}
         </div>
         </div>
-        </a>
+        </Link>
     ))
  
     return(

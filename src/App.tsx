@@ -19,6 +19,8 @@ function App() {
         
         <Route path='/' element={<Leagues />} />
         <Route path='/about' element={<About />} />
+        <Route path='/leagues' element={<Leagues />} />
+        <Route path='/leagues/:id' element={<Leagues />} />
 
       
       </Routes>
