@@ -17,7 +17,7 @@ interface League{
 interface Competition {
     id: number
     area: string
-    name: String
+    name: string
     code: string | null
     type: string
     emblem: string | null
